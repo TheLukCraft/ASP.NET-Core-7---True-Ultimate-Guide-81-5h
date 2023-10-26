@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 var app = builder.Build();
 app.UseRouting();
-//adds all controllers that implement Controller. You do not need to manually make endpoints here
+//adds all controllers that have Controller in their name or have the attribute [Controller]. You do not need to manually make endpoints here
 app.MapControllers();
 //app.UseEndpoints(endpoints =>
 //{
