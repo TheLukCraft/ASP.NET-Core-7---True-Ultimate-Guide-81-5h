@@ -45,7 +45,7 @@ namespace ControllersExample.Controllers
         }
 
         [Route("file-download")]
-        public VirtualFileResult FileDownload()
+        public IActionResult FileDownload()
         {
             ////first way
             //return new VirtualFileResult("/photo.jpg", "image/jpg");
