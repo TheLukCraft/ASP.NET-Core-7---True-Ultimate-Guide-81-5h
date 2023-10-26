@@ -4,65 +4,43 @@ namespace ModelBindingAndValidationExample.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("bookstore")]
-        public IActionResult Index()
+        //Priority: Form fields > Request body > Route data > query string parameters
+        //Route data: /bookstore/1/false
+        //Query string: /bookstore?bookid=10&isloggedin=true
+        //You can, of course, combine the two, but this route date will take precedence. Router data and query string will read correctly
+        //Example: /bookstore/1/false?bookid=10&isloggedin=true
+        [Route("bookstore/{bookid?}/{isloggedin?}")]
+        public IActionResult Index(int? bookid, bool? isloggedin)
         {
             //Book id should be applied
-            if (!Request.Query.ContainsKey("bookid"))
+            if (bookid.HasValue == false)
             {
                 //return new BadRequestResult();
-                return BadRequest("Book id is not supplied");
+                return BadRequest("Book id is not supplied or empty");
             }
-            //Book id can't be empty
-            if (string.IsNullOrEmpty(Convert.ToString(Request.Query["bookid"])))
+            //Book id can't be less than or equal to 0
+            if (bookid <= 0)
             {
-                return BadRequest("Book id can't be null or empty");
+                return BadRequest("Book id can't be less than or equal to 0");
             }
 
             //Book id should be between 1 to 1000
-            int bookId = Convert.ToInt32(ControllerContext.HttpContext.Request.Query["bookid"]);
-            if (bookId <= 0)
+            if (bookid <= 0)
             {
                 return BadRequest("Book id cant be less than 0 equal to zero.");
             }
-            if (bookId > 1000)
+            if (bookid > 1000)
             {
                 return NotFound("Book id can't be greater than 1000.");
             }
             //isLoggedIn should be true
-            if (!Convert.ToBoolean(Request.Query["isloggedin"]))
+            if (isloggedin == false)
             {
                 //return Unauthorized("User must be authenticated");
                 return StatusCode(401);
             }
-            ////302 - Found
-            //return new RedirectToActionResult("Books", "Store", new { });
-            ////second way
-            //return RedirectToAction("Books", "Store", new { id = bookId });
 
-            ////301 - Moved permanently
-            //return new RedirectToActionResult("Books", "Store", new { }, permanent: true);
-            ////second way
-            //return RedirectToActionPermanent("Books", "Store", new { id = bookId });
-
-            ////worse than RedirectToAction, but more simple
-            ////301 - Moved permanently
-            // return new LocalRedirectResult($"store/books/{bookId}");
-
-            ////shorter notation
-            ////302 - Found
-            //return LocalRedirect($"store/books/{bookId}");
-
-            ////shorter notation
-            ////301 - Moved Permanently
-            return LocalRedirectPermanent($"store/books/{bookId}");
-
-            ////to be transferred between other domains
-            ////302 - Found
-            //return Redirect($"www.google.pl");
-
-            ////301 - Moved Permanently
-            //return RedirectPermanent($"www.google.pl");
+            return Content($"Book id: {bookid}");
         }
     }
 }
