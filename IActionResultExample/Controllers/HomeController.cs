@@ -35,11 +35,34 @@ namespace IActionResultExample.Controllers
                 //return Unauthorized("User must be authenticated");
                 return StatusCode(401);
             }
-            //302 - Found
+            ////302 - Found
             //return new RedirectToActionResult("Books", "Store", new { });
+            ////second way
+            //return RedirectToAction("Books", "Store", new { id = bookId });
 
-            //301 - Moved permanently
-            return new RedirectToActionResult("Books", "Store", new { }, true);
+            ////301 - Moved permanently
+            //return new RedirectToActionResult("Books", "Store", new { }, permanent: true);
+            ////second way
+            //return RedirectToActionPermanent("Books", "Store", new { id = bookId });
+
+            ////worse than RedirectToAction, but more simple
+            ////301 - Moved permanently
+            // return new LocalRedirectResult($"store/books/{bookId}");
+
+            ////shorter notation
+            ////302 - Found
+            //return LocalRedirect($"store/books/{bookId}");
+
+            ////shorter notation
+            ////301 - Moved Permanently
+            return LocalRedirectPermanent($"store/books/{bookId}");
+
+            ////to be transferred between other domains
+            ////302 - Found
+            //return Redirect($"www.google.pl");
+
+            ////301 - Moved Permanently
+            //return RedirectPermanent($"www.google.pl");
         }
     }
 }
