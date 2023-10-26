@@ -10,7 +10,7 @@ namespace ModelBindingAndValidationExample.Controllers
         //You can, of course, combine the two, but this route date will take precedence. Router data and query string will read correctly
         //Example: /bookstore/1/false?bookid=10&isloggedin=true
         [Route("bookstore/{bookid?}/{isloggedin?}")]
-        public IActionResult Index(int? bookid, bool? isloggedin)
+        public IActionResult Index([FromQuery] int? bookid, [FromQuery] bool? isloggedin)
         {
             //Book id should be applied
             if (bookid.HasValue == false)
@@ -22,12 +22,6 @@ namespace ModelBindingAndValidationExample.Controllers
             if (bookid <= 0)
             {
                 return BadRequest("Book id can't be less than or equal to 0");
-            }
-
-            //Book id should be between 1 to 1000
-            if (bookid <= 0)
-            {
-                return BadRequest("Book id cant be less than 0 equal to zero.");
             }
             if (bookid > 1000)
             {
