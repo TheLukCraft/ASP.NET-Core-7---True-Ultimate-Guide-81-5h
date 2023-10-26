@@ -4,7 +4,7 @@ namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("book")]
+        [Route("bookstore")]
         public IActionResult Index()
         {
             //Book id should be applied
@@ -35,7 +35,11 @@ namespace IActionResultExample.Controllers
                 //return Unauthorized("User must be authenticated");
                 return StatusCode(401);
             }
-            return File("/photo.jpg", "image/jpg");
+            //302 - Found
+            //return new RedirectToActionResult("Books", "Store", new { });
+
+            //301 - Moved permanently
+            return new RedirectToActionResult("Books", "Store", new { }, true);
         }
     }
 }
