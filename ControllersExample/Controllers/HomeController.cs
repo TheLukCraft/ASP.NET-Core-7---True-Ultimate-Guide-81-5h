@@ -2,6 +2,7 @@
 
 namespace ControllersExample.Controllers
 {
+    [Controller]
     public class HomeController
     {
         [Route("home")]
