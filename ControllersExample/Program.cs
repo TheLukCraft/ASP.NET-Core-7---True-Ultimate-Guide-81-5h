@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddTransient<HomeController>();
 builder.Services.AddControllers();
 var app = builder.Build();
+app.UseStaticFiles();
 app.UseRouting();
 //adds all controllers that have Controller in their name or have the attribute [Controller]. You do not need to manually make endpoints here
 app.MapControllers();
