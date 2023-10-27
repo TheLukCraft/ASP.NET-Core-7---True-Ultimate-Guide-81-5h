@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using ModelValidationsExample.CustomValidators;
 using System.ComponentModel.DataAnnotations;
 
@@ -30,6 +31,7 @@ namespace ModelValidationsExample.Models
         [Range(0, 999.99, ErrorMessage = "{0} should be between ${1} and ${2}")]
         public double? Price { get; set; }
 
+        //[BindNever]
         [MinimumYearValidator(2003, ErrorMessage = "Date of Birth should not be newer than Jan 01, {0}")]
         public DateTime? DateOfBirth { get; set; }
 
