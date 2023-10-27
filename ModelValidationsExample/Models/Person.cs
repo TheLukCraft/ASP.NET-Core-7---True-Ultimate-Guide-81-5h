@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ModelValidationsExample.Models
 {
-    public class Person
+    public class Person : IValidatableObject
     {
         [Required(ErrorMessage = "{0} can't be empty or null")]
         [Display(Name = "Person name")]
@@ -38,9 +38,19 @@ namespace ModelValidationsExample.Models
         [DateRangeValidator("FromDate", ErrorMessage = "From Date should be older than or equal to To Date")]
         public DateTime? ToDate { get; set; }
 
+        public int? Age { get; set; }
+
         public override string ToString()
         {
             return $"Person object - Person name: {PersonName}, Email: {Email}, Phone: {Phone}, Password: {Password}, ConfirmPassword: {ConfirmPassword}, Price: {Price} ";
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (DateOfBirth.HasValue == false && Age.HasValue == false)
+            {
+                yield return new ValidationResult("Either of Date of Birth or Age must be supplied", new[] { nameof(Age) });
+            }
         }
     }
 }
