@@ -7,7 +7,7 @@
 
         public override string ToString()
         {
-            return $"Book id {BookId}, Author: {Author}";
+            return $"Book object - Book id {BookId}, Author: {Author}";
         }
     }
 }
