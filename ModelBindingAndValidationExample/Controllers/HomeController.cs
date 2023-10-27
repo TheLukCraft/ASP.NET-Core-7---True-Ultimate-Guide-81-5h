@@ -14,10 +14,11 @@ namespace ModelBindingAndValidationExample.Controllers
         //It also doesn't matter the case of the letters next to the key.
         //Example: /bookstore/1/false?bookid=10&isloggedin=true&Author=Lol
         //Id in the case will be taken as route data, not query string, because route data has priority.
+        //bookstore/1/false?bookid=10&isloggedin=true&Author=Lol
         //On the other hand, if we clearly give the attribute [FromQuery], [FromRoute], then even though we have,
         //for example, repeated id in the query, it will take those of the corresponding attribute.
         [Route("bookstore/{bookid?}/{isloggedin?}")]
-        public IActionResult Index([FromQuery] int? bookid, [FromRoute] bool? isloggedin, [FromQuery] Book book)
+        public IActionResult Index(int? bookid, [FromRoute] bool? isloggedin, Book book)
         {
             //Book id should be applied
             if (bookid.HasValue == false)
