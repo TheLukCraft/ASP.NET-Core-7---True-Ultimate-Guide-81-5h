@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseWhenExample", "UseWhenEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBindingAndValidationExample", "ModelBindingAndValidationExample\ModelBindingAndValidationExample.csproj", "{315C472B-DE43-45C7-9502-CB9A99A555D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelValidationsExample", "ModelValidationsExample\ModelValidationsExample.csproj", "{68C5D167-57DC-419D-9A94-00A965DFA037}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{315C472B-DE43-45C7-9502-CB9A99A555D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{315C472B-DE43-45C7-9502-CB9A99A555D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{315C472B-DE43-45C7-9502-CB9A99A555D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68C5D167-57DC-419D-9A94-00A965DFA037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68C5D167-57DC-419D-9A94-00A965DFA037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68C5D167-57DC-419D-9A94-00A965DFA037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68C5D167-57DC-419D-9A94-00A965DFA037}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{22CF42E3-AFE0-4C70-9BAD-655929682A29} = {CD2690F5-4C93-4C3F-ADDC-CD13F3F5C279}
 		{CF903937-5549-4DD4-8794-8ABF958F8D41} = {CD2690F5-4C93-4C3F-ADDC-CD13F3F5C279}
 		{315C472B-DE43-45C7-9502-CB9A99A555D5} = {CD2690F5-4C93-4C3F-ADDC-CD13F3F5C279}
+		{68C5D167-57DC-419D-9A94-00A965DFA037} = {CD2690F5-4C93-4C3F-ADDC-CD13F3F5C279}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2267E5C9-9D9F-4E05-9AF9-6B40BB40BFBD}
